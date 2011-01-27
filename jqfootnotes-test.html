@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xlmns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+        <title>ISN Landing Page Mock-up</title>
+        <style type="text/css">
+            @import url("css/isn.css");
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+<h1>Automatic Footnotes with jQuery</h1>
+   <p>The footnotes at the end of this article were automatically generated from the content of the page using jQuery. To learn how to do this, <a href="/automatic-footnotes-with-jquery/">read the original article on CSSnewbie.</a></p>
+   <p> Sed sollicitudin. Suspendisse ultrices, orci et hendrerit fermentum,  tortor est tempus urna, <q cite="http://www.cssnewbie.com/">quis porta mauris purus eget neque.</q> Nunc  lobortis sagittis lectus. Fusce sit amet justo. Ut nisi purus, molestie  a, lobortis et, vulputate ut, quam. </p>
+   <blockquote title="Wilder, Laura Ingles. <em>Lorem Ipsum and Me</em>. Fictional Press, 2008.">
+      <p>Aliquam congue leo nec est  consectetuer facilisis. Vivamus commodo. Pellentesque non massa. Duis  tincidunt mauris ut ante scelerisque posuere. Suspendisse potenti.  Maecenas id est sit amet elit congue varius. </p>
+   </blockquote>
+   <p>Fusce dui erat, egestas in, pharetra eu, tincidunt in, neque. Mauris  convallis augue in lacus. Quisque ultricies nunc tristique risus.  Vivamus eu arcu vel orci mattis mattis. Nunc pharetra auctor quam. Nunc  at ligula scelerisque nisl vestibulum faucibus. Morbi tincidunt commodo  purus. <q title="My brother says this all the time. We don't know what he means.">Vivamus justo.</q> Duis fermentum, augue id rutrum interdum, lacus  velit scelerisque tellus, sit amet aliquam nisi purus ut diam. </p>
+   <p>Cras  odio. Sed suscipit, nulla eu accumsan sagittis, nibh urna molestie  dolor, nec viverra purus justo vel risus. Vestibulum molestie justo at  eros. Nunc laoreet elit ac elit. Sed venenatis mauris ut libero. Cras  mollis nibh. Sed vitae nunc. Proin quis enim. Morbi sodales. Donec  vulputate ipsum. Nunc tempor arcu aliquam mauris. </p>
+   <p>Nullam adipiscing lectus at odio. Integer sit amet erat eget quam  tristique condimentum. Maecenas diam lectus, gravida a, varius aliquet,  imperdiet ut, sem. Nullam risus est, eleifend ac, auctor at, auctor  vitae, orci. Cum sociis natoque penatibus et magnis dis parturient  montes, nascetur ridiculus mus. Nulla facilisi. Etiam placerat dapibus  felis. Donec porta imperdiet neque. <q title="Anonymous. <em>Fictional Book with a Link</em>. Some Guy's Basement, 20X6." cite="http://www.cssnewbie.com/">Vivamus nec dolor.</q> Morbi eu purus  sed augue ullamcorper porttitor. Donec euismod ipsum non lacus. </p>
+   <p>Pellentesque habitant morbi tristique senectus et netus et malesuada  fames ac turpis egestas. Sed vel mauris imperdiet libero varius  porttitor.</p> 
+   <blockquote cite="http://www.robglazebrook.com/"><p>Aliquam libero. Donec nisl purus, aliquam iaculis, feugiat  eu, bibendum in, eros. </p></blockquote>
+   <p>Nullam eros. Sed aliquet euismod urna. Sed urna.  <q title="Of course, modern medicine has rendered this claim outrageous.">Fusce feugiat quam ut turpis.</q> Nulla facilisi. Curabitur elit urna,  ornare in, ornare eget, ullamcorper sit amet, diam. Suspendisse semper,  elit eu placerat vulputate, nisl urna vestibulum augue, at sagittis  lacus lectus sit amet magna. Nam molestie feugiat erat. Praesent  pellentesque vestibulum nibh. Nunc ac tellus sed felis tempor  ultricies. Sed pellentesque. </p>
+        </div><!-- /wrapper -->
+        <ol id="footnotes"></ol>
+    </body>
+    <!-- Scripts -->
+    <script src="http://cdn.jquerytools.org/1.1.2/jquery.tools.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    //footnote = 1;
+    $("q[cite],q[title],blockquote[cite],blockquote[title]").addClass("footnote");
+    $(".footnote").each(function(f) {
+        $(this).after(" <sup><a href=\"#fn"+f+"\">"+f+"</a></sup>");
+        $("a[href=#fn"+f+"]").attr("id", "fnr" + f);
+        cite="<li id=fn"+f+">";
+        url=$(this).attr("cite");
+        title=$(this).attr("title");
+        if(title && url) {
+            cite+="<a href=\""+url+"\">"+title+"</a>";
+        } else if(title) {
+            cite+=title;
+        } else if(url) {
+            cite+="<a href=\""+url+"\">"+url+"</a>";
+        }
+        cite+=" <a href=\"#fnr"+f+"\">&#8617;</a>";
+        cite+="</li>";
+        $("#footnotes").append(cite);
+        //footnote++;
+    });
+});
+	</script>
+</html>
