@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //footnote = 1;
     $("q[cite],q[title],blockquote[cite],blockquote[title]").addClass("footnote");
-    $(".footnote").each(function(f=1) {
+    $(".footnote").each(function(f) {
         $(this).after(" <sup><a href=\"#fn"+i+"\">"+f+"</a></sup>");
         $("a[href=#fn"+f+"]").attr("id", "fnr" + f);
         cite="<li id=fn"+f+">";
